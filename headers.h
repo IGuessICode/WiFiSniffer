@@ -1,6 +1,6 @@
 // Header indicators
-#ifndef HEADERS.H
-#define HEADERS.H
+#ifndef HEADERS_H
+#define HEADERS_H
 
 // Function headers
 #include "wificollector_quit.h"
