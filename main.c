@@ -6,9 +6,7 @@
 #include <stdlib.h> // lib for I/O
 
 // HEADER FILES
-#include "wificollector_quit.h"
-#include "wificollector_collect.h"
-#include "wificollector_display.h" // includes display and display_all
+#include "functions.h"
 
 // CONSTANTS
 #define MAX_LENGTH_ARRAY 200
