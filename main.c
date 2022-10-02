@@ -6,7 +6,7 @@
 #include <stdlib.h> // lib for I/O
 
 // HEADER FILES
-#include "functions.h"
+#include "headers.h"
 
 // CONSTANTS
 #define MAX_LENGTH_ARRAY 200
