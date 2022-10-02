@@ -42,7 +42,7 @@ int main() {
 	return 0;
 }
 
-// functions
+// functions -  Do they need to be declared before they are used or smt?
 //	void wificollector_quit()
 //	void wificollector_collect()
 //	void wificollector_display()
