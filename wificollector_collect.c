@@ -2,7 +2,7 @@
 #inlcude <stdlib.h>
 #include "wificollector_collect.h"
 
-char[] wificollector_collect() {
+FILE wificollector_collect() {
  do {
    
  } while ();
