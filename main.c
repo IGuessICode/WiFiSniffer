@@ -9,7 +9,7 @@ int main() {
 /*#ifdef DEBUG
     fprint(sdterr, "This is a debug message\n");
 #endif
-    TRY TO COMPILE WITH LINE: gcc -DDEBUG_MSG main.c */
+    TRY TO COMPILE WITH LINE: gcc -DEBUG main.c */
 
     char input[STR];
     int option;
