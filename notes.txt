@@ -13,7 +13,7 @@ NO - break
 OPTION B:
 Look for "Cell" - count them? https://stackoverflow.com/questions/29429384/search-string-in-a-file-in-c
 	IF PROGRAM EXECUTED WITH DEBUG 
-			printf("There are %d cells in this file. All will be collected in contiguous in the buffer.")
+			printf("There are %d cells in this file. All will be collected contiguously in the buffer.")
 Read Cell
 store in position
 position++
