@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "functions.h"
 #include "quit.h"
 #include "collect.h"
 #include "display.h"
 
 int main() {
 
-    //debug("This is a debug message");
+/*#ifdef DEBUG
+    fprint(sdterr, "This is a debug message\n");
+#endif
+    TRY TO COMPILE WITH LINE: gcc -DEBUG main.c */
 
     char input[STR];
     int option;

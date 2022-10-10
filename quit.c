@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "quit.h"
-#include "functions.h"
+
+void reset (char string[STR]) {
+    for (int i = 0; i < STR; ++i)
+        string[i] = 0;
+}
 
 void wificollector_quit(void) {
 

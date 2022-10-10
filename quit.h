@@ -5,6 +5,9 @@
 
 char quit[STR];
 
+//function to reset a string
+void reset (char string[STR]);
+
 void wificollector_quit(void);
 
 #endif //QUIT_H
