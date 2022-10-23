@@ -1,6 +1,8 @@
 # WiFiSniffer
 Uni project: WiFi Collector
 
+Faulty version we uploaded
+
 The program is divided into 4 modules:
 * The _main_ in which the execution starts, the menu will be displayed and from where the further on needed functions will be called.
 * The module _quit_ to to implement the first task of quitting the program and a function called _reset()_ which resets a string back to an empty one.
