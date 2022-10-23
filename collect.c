@@ -1,22 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 #include "quit.h"
 #include "collect.h"
 
 struct network networks[MAX];
 static int position = 0;
-
-//creating all the file pointers
-/*void create_file_pointers(){
-    for (int i = 0; i < 21; i++) {
-        char path[] = "./cells/info_cell_";
-        strcat(path, i);
-        strcat(path, ".txt");
-        FILE *fpi = fopen(path, "r");
-    }
-}*/
 
 void wificollector_collect(void) {
 
@@ -33,6 +22,17 @@ void wificollector_collect(void) {
             if (atoi(input) < 1 || atoi(input) > 21) {
                 printf("Please introduce a valid cell number. \n");
             }
+            /*for (int i = 0; i < MAX; i++) {
+                int stored = 0;
+                if (networks[i].cell == (atoi)*input) {
+                     stored++;
+                }
+                if (stored > 0) {
+                    printf("This cell has already been collected.");
+                    input[0] = '2';
+                    input[1] = '2';
+                }
+            }*/
         } while (atoi(input) < 1 || atoi(input) > 21);
 
         input[strlen(input)-1] = '.';
@@ -96,7 +96,6 @@ void wificollector_collect(void) {
         fclose(fp);
         reset(file);
         reset(path);
-        //chdir(".."); //Changing the current working directory to the previous directory
 
         do {
             printf("Do you want to add another access point? [y/N]: ");

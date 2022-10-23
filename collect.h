@@ -16,8 +16,6 @@ struct network {
     int signal_level;
 };
 
-//void create_file_pointers(void);
-
 void wificollector_collect(void);
 
 #endif //COLLECT_H
