@@ -14,7 +14,11 @@ To run it in the shell you need to use the following commands:
   * gcc -Wall quit.c -c
   * gcc -Wall collect.c -c
   * gcc -Wall display.c -c
+  
 - to link the object files into a single binary file
   * gcc *.c -o program
+  if you want to display the debugging message:
+  * gcc *.c -DDEBUG -o program
+  
 - to execute the program
   * ./program
