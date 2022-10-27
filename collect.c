@@ -6,7 +6,8 @@
 
 // Create the dynamic array
 //struct network *networks = (struct network*) malloc(SIZE*sizeof(struct network));
-		//free(networks); is in main.c
+		/* For allocating, the "initialization" needs to be in main, or you
+		get error: initializer element is not a constant */
 static int position = 0;
 
 void wificollector_collect(struct network *networks) {
