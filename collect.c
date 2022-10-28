@@ -4,12 +4,14 @@
 #include "quit.h"
 #include "collect.h"
 
-struct network networks[MAX];
 static int position = 0;
 
 void wificollector_collect(void) {
 
     char input[STR], file[STR];
+
+    //Assign memory
+    network *networks = calloc(SIZE, sizeof(network));
 
     do {
 
@@ -35,6 +37,7 @@ void wificollector_collect(void) {
             }*/
         } while (atoi(input) < 1 || atoi(input) > 21);
 
+        //Create a string for the path where the file is to be found
         input[strlen(input)-1] = '.';
         strcpy(file, "info_cell_");
         strcat(file, input);
@@ -58,39 +61,45 @@ void wificollector_collect(void) {
         }
         fclose(fp);
 
+        //Reading and collecting the data
         fopen(path, "r");
 
         for (int i = 0; i < repetitions; i++) {
-            printf("Network read from %s (added to position %d of the array)\n", file, position);
+            printf("Data read from %s (added to position %d of the array)\n", file, position);
 
             fscanf(fp, "Cell %i\n", &networks[position].cell);
-            printf("%i\n", networks[position].cell);
+            printf("%i ", networks[position].cell);
 
             fscanf(fp, "Address: %s\n", (char *) &networks[position].address);
-            printf("%s\n", networks[position].address);
+            printf("%s ", networks[position].address);
 
             fscanf(fp, "ESSID:%[^\n]\n", (char *) &networks[position].essid);
-            printf("%s\n", networks[position].essid);
+            printf("%s ", networks[position].essid);
 
             fscanf(fp, "Mode:%s\n", (char *) &networks[position].mode);
-            printf("%s\n", networks[position].mode);
+            printf("%s ", networks[position].mode);
 
             fscanf(fp, "Channel:%i\n", &networks[position].channel);
-            printf("%i\n", networks[position].channel);
+            printf("%i ", networks[position].channel);
 
             fscanf(fp, "Encryption key:%s\n", (char *) &networks[position].encryption_key);
-            printf("%s\n", networks[position].encryption_key);
+            printf("%s ", networks[position].encryption_key);
 
             fscanf(fp, "Quality=%s\n", (char *) &networks[position].quality);
-            printf("%s\n", networks[position].quality);
+            printf("%s ", networks[position].quality);
 
             fscanf(fp, "Frequency:%f GHz\n", &networks[position].frequency);
-            printf("%f\n", networks[position].frequency);
+            printf("%f ", networks[position].frequency);
 
             fscanf(fp, "Signal level=%i dBm\n", &networks[position].signal_level);
-            printf("%i\n", networks[position].signal_level);
+            printf("%i\n\n", networks[position].signal_level);
 
             position++;
+
+            //Resizing the dynamic array, adding 5 position
+            if (position%5 == 0)
+                networks = realloc(networks, sizeof(networks) + 5);
+
         }
 
         fclose(fp);

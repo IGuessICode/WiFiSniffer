@@ -1,10 +1,10 @@
 #ifndef COLLECT_H
 #define COLLECT_H
 
-#define MAX 200 //arrays
+#define SIZE 5 //dynamic arrays
 #define STR 80 //strings
 
-struct network {
+typedef struct network {
     int cell;
     char address[STR];
     char essid[STR];
@@ -14,7 +14,7 @@ struct network {
     char quality[STR];
     float frequency;
     int signal_level;
-};
+} network;
 
 void wificollector_collect(void);
 
