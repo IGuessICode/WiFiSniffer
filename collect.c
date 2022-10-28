@@ -4,10 +4,6 @@
 #include "quit.h"
 #include "collect.h"
 
-// Create the dynamic array
-//struct network *networks = (struct network*) malloc(SIZE*sizeof(struct network));
-		/* For allocating, the "initialization" needs to be in main, or you
-		get error: initializer element is not a constant */
 static int position = 0;
 
 void wificollector_collect(struct network *networks) {
@@ -38,7 +34,8 @@ void wificollector_collect(struct network *networks) {
             }*/
         } while (atoi(input) < 1 || atoi(input) > 21);
 
-        input[strlen(input)-1] = '.';
+        //Create a string for the path where the file is to be found
+	input[strlen(input)-1] = '.';
         strcpy(file, "info_cell_");
         strcat(file, input);
         strcat(file, "txt");
@@ -61,13 +58,7 @@ void wificollector_collect(struct network *networks) {
         }
         fclose(fp);
 
-	//Check if addition of new cells -> array needs increase its size
-	if ((position + repetitions) % SIZE == 0) {
-		printf("Allocating %d positions to the array\n", SIZE);
-		networks = realloc(networks, (position+SIZE) * sizeof(struct network));
-	}
-
-
+	//Reading and collecting the data
         fopen(path, "r");
 
         for (int i = 0; i < repetitions; i++) {
@@ -101,6 +92,12 @@ void wificollector_collect(struct network *networks) {
             printf("%i\n", networks[position].signal_level);
 
             position++;
+            //Check if addition of new cells -> array needs increase its size
+	    if (position % SIZE == 0) {
+		printf("Allocating %d positions to the array\n", SIZE);
+		networks = realloc(networks, (position+SIZE) * sizeof(struct network));
+	    }
+
         }
 
         fclose(fp);

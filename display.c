@@ -4,17 +4,19 @@
 #include "collect.h"
 #include "display.h"
 
-// extern struct network networks[MAX];
+//extern struct network *networks;
 
 int print(int n, struct network *networks) {
     int printed = 0;
 
-    for (int i = 0; i < SIZE; i++) {
-        if (networks[i].cell == n) {
+    for (int i = 0; i < sizeof(networks); i++) {
+       struct  network *pointer = &networks[i];
+
+	if (pointer->cell == n) {
             printf("%i %s %s %s %i %s %s %f %i \n",
-                   networks[i].cell, networks[i].address, networks[i].essid,
-                   networks[i].mode, networks[i].channel, networks[i].encryption_key,
-                   networks[i].quality, networks[i].frequency, networks[i].signal_level);
+                   pointer->cell, pointer->address, pointer->essid,
+                   pointer->mode, pointer->channel, pointer->encryption_key,
+                   pointer->quality, pointer->frequency, pointer->signal_level);
             printed++;
         }
     }
