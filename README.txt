@@ -14,6 +14,7 @@ To run it in the shell you need to use the following commands:
     gcc -Wall quit.c -c
     gcc -Wall collect.c -c
     gcc -Wall display.c -c
+    gcc -Wall select.c -c
 
 - to link the object files into a single binary file
     gcc *.c -o program
