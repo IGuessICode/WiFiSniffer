@@ -16,6 +16,7 @@ typedef struct network {
     int signal_level;
 } network;
 
-void wificollector_collect(void);
+void wificollector_collect(struct network *networks);
+int size_of_networks(void);
 
 #endif //COLLECT_H

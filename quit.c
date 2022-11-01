@@ -10,7 +10,7 @@ void reset (char string[STR]) {
 void wificollector_quit(void) {
 
     do {
-        printf("Are you sure you want to quit? [y/N]: ");
+        printf("Are you sure you want to exit? [y/N]: ");
         reset(quit);
         fgets(quit, STR, stdin);
 
