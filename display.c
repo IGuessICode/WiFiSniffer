@@ -4,20 +4,18 @@
 #include "collect.h"
 #include "display.h"
 
-//extern struct network *networks;
-
 int print(int n, struct network *networks) {
     int printed = 0;
 
-    for (int i = 0; i < sizeof(networks); i++) {
-       struct  network *pointer = &networks[i];
+    for (int i = 0; i < size_of_networks(); i++) {
 
-	if (pointer->cell == n) {
-            printf("%i %s %s %s %i %s %s %f %i \n",
-                   pointer->cell, pointer->address, pointer->essid,
-                   pointer->mode, pointer->channel, pointer->encryption_key,
-                   pointer->quality, pointer->frequency, pointer->signal_level);
-            printed++;
+        if (networks[i].cell == n) {
+            printf("%i %s %s %s %i %s %i %i %f %i \n",
+                   networks[i].cell, networks[i].address, networks[i].essid,
+                   networks[i].mode, networks[i].channel, networks[i].encryption_key,
+                   networks[i].quality[0], networks[i].quality[1], networks[i].frequency, networks[i].signal_level);
+            printf("STORED IN: %p\n\n", (void *) &networks[i]);
+	    printed++;
         }
     }
     return printed;
@@ -45,7 +43,7 @@ void wificollector_display(struct network *networks) {
         }
 
         do {
-            printf("Do you want to print the information of another cell? [y/N]: ");
+            printf("\nDo you want to print the information of another cell? [y/N]: ");
             reset(quit);
             fgets(quit, STR, stdin);
 
@@ -60,6 +58,14 @@ void wificollector_display_all(struct network *networks) {
 
     for (int n = 1; n < 22; n++) {
         print(n, networks);
+        //int printed = print(n, networks);
+
+        /*
+        if (printed == 0) { //error: information has not been added before
+            fprintf(stderr, "%s\n", "No information has been added yet.");
+            break;
+        }
+        */
     }
 
 }

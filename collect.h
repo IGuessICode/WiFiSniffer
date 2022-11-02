@@ -4,18 +4,19 @@
 #define SIZE 5 //dynamic arrays
 #define STR 80 //strings
 
-struct network {
+typedef struct network {
     int cell;
     char address[STR];
     char essid[STR];
     char mode[STR];
     int channel;
     char encryption_key[STR];
-    char quality[STR];
+    int quality[2];
     float frequency;
     int signal_level;
-};
+} network;
 
 void wificollector_collect(struct network *networks);
+int size_of_networks(void);
 
 #endif //COLLECT_H
