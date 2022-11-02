@@ -11,7 +11,7 @@ typedef struct network {
     char mode[STR];
     int channel;
     char encryption_key[STR];
-    char quality[STR];
+    int quality[2];
     float frequency;
     int signal_level;
 } network;

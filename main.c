@@ -42,9 +42,9 @@ int main() {
 
             case 2: wificollector_collect(networks); break;
 
-            //case 4: wificollector_select_best(networks); break;
+            case 4: wificollector_select_best(networks); break;
 
-            //case 5: wificollector_select_worst(networks); break;
+            case 5: wificollector_select_worst(networks); break;
 
             case 10: wificollector_display(networks); break;
 

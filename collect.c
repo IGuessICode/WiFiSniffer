@@ -22,16 +22,17 @@ void wificollector_collect(struct network *networks) {
 
             if (atoi(input) < 1 || atoi(input) > 21) {
                 printf("Please introduce a valid cell number.\n\n");
-            }
 
-            for (int i = 0; i < 21; i++) {
-                network *pointer = &networks[i];
-                doubled = 0;
+            } else {
+                for (int i = 0; i < 21; i++) {
+                    network *pointer = &networks[i];
+                    doubled = 0;
 
-                if (pointer->cell == atoi(input)) {
-                    printf("This cell has already been collected.\n\n");
-                    doubled = 1;
-                    break;
+                    if (pointer->cell == atoi(input)) {
+                        printf("This cell has already been collected.\n\n");
+                        doubled = 1;
+                        break;
+                    }
                 }
             }
 
@@ -86,8 +87,9 @@ void wificollector_collect(struct network *networks) {
             fscanf(fp, "Encryption key:%s\n", networks[position].encryption_key);
             printf("%s ", networks[position].encryption_key);
 
-            fscanf(fp, "Quality=%s\n", networks[position].quality);
-            printf("%s ", networks[position].quality);
+            fscanf(fp, "Quality=%i", &networks[position].quality[0]);
+            fscanf(fp, "/%i\n", &networks[position].quality[1]);
+            printf("%i/%i ", networks[position].quality[0], networks[position].quality[1]);
 
             fscanf(fp, "Frequency:%f GHz\n", &networks[position].frequency);
             printf("%f ", networks[position].frequency);
@@ -95,24 +97,13 @@ void wificollector_collect(struct network *networks) {
             fscanf(fp, "Signal level=%i dBm\n", &networks[position].signal_level);
             printf("%i\n\n", networks[position].signal_level);
 
-            /*
-            printf("%p\n", &networks[position].cell);
-            printf("%p\n", &networks[position].address);
-            printf("%p\n", &networks[position].essid);
-            printf("%p\n", &networks[position].mode);
-            printf("%p\n", &networks[position].channel);
-            printf("%p\n", &networks[position].encryption_key);
-            printf("%p\n", &networks[position].quality);
-            printf("%p\n", &networks[position].frequency);
-            printf("%p\n\n", &networks[position].signal_level);
-            */
-
             position++;
 
             //Resizing the dynamic array, adding 5 position
             if (position % SIZE == 0) {
+                int times_resized = position / SIZE;
                 printf("(Allocating another %d positions to the dynamic array)\n", SIZE);
-                networks = realloc(networks, sizeof(network) * SIZE * ((position / SIZE) + 1));
+                networks = realloc(networks, sizeof(network) * SIZE * 50);
             }
 
         }
