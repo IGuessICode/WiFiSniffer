@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "quit.h"
 #include "collect.h"
+#include "select.h"
 #include "display.h"
 
 int main() {
@@ -10,6 +11,8 @@ int main() {
 
     char input[STR];
     int option;
+    //Assign memory
+    network **networks = (network **) calloc(SIZE, sizeof(network));
 
     do {
         printf("\n[2022] SUCEM S.L. Wifi Collector \n \n");
@@ -37,16 +40,23 @@ int main() {
 
             case 1: wificollector_quit(); break;
 
-            case 2: wificollector_collect(); break;
+            case 2: wificollector_collect(networks); break;
 
-            case 10: wificollector_display(); break;
+            case 4: wificollector_select_best(networks); break;
 
-            case 11: wificollector_display_all(); break;
+            case 5: wificollector_select_worst(networks); break;
+
+            case 10: wificollector_display(networks); break;
+
+            case 11: wificollector_display_all(networks); break;
 
             default: break;
         }
 
     } while (quit[0] != 'y' && quit[0] != 'Y');
+
+    //Free assigned memory
+    free(networks);
 
     return 0;
 }
