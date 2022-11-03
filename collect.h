@@ -1,7 +1,7 @@
 #ifndef COLLECT_H
 #define COLLECT_H
 
-#define SIZE 5 //dynamic arrays
+#define SIZE 50 //dynamic arrays
 #define STR 80 //strings
 
 typedef struct network {

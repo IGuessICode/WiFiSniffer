@@ -6,12 +6,15 @@
 #include "display.h"
 #include "select.h"
 
-float quality;
+float numerator, denominator, quality;
 
 void print2(float n, struct network *networks) {
 
     for (int i = 0; i < size_of_networks(); i++) {
-        quality = networks[i].quality[0] / networks[i].quality[1];
+
+        numerator = (float) networks[i].quality[0];
+        denominator = (float) networks[i].quality[1];
+        quality = numerator / denominator;
 
         if (quality == n) {
             printf("%i %s %s %s %i %s %i/%i %f %i \n",
@@ -27,7 +30,12 @@ void wificollector_select_best(struct network *networks) {
     float best = 0;
 
     for (int i = 0; i < size_of_networks(); i++) {
-        quality = networks[i].quality[0] / networks[i].quality[1];
+
+        numerator = (float) networks[i].quality[0];
+        denominator = (float) networks[i].quality[1];
+        quality = numerator / denominator;
+
+        //printf("%i/%i=%f\n", networks[i].quality[0], networks[i].quality[1], quality);
 
         if (quality > best) {
             best = quality;
@@ -43,7 +51,12 @@ void wificollector_select_worst(struct network *networks) {
     float worst = 1;
 
     for (int i = 0; i < size_of_networks(); i++) {
-        quality = networks[i].quality[0] / networks[i].quality[1];  //DIVISION BY ZERO, FLOATING POINT EXCEPTION
+
+        numerator = (float) networks[i].quality[0];
+        denominator = (float) networks[i].quality[1];
+        quality = numerator / denominator;
+
+        //printf("%i/%i=%f\n", networks[i].quality[0], networks[i].quality[1], quality);
 
         if (quality < worst) {
             worst = quality;

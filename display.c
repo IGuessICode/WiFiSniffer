@@ -10,7 +10,7 @@ int print(int n, struct network *networks) {
     for (int i = 0; i < size_of_networks(); i++) {
 
         if (networks[i].cell == n) {
-            printf("%i %s %s %s %i %s %i4/%i %f %i \n",
+            printf("%i %s %s %s %i %s %i/%i %f %i \n",
                    networks[i].cell, networks[i].address, networks[i].essid,
                    networks[i].mode, networks[i].channel, networks[i].encryption_key,
                    networks[i].quality[0], networks[i].quality[1], networks[i].frequency, networks[i].signal_level);

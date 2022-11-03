@@ -103,7 +103,7 @@ void wificollector_collect(struct network *networks) {
             if (position % SIZE == 0) {
                 int times_resized = position / SIZE;
                 printf("(Allocating another %d positions to the dynamic array)\n", SIZE);
-                networks = realloc(networks, sizeof(network) * SIZE * 50);
+                networks = realloc(networks, sizeof(network) * SIZE * (times_resized + 1));
             }
 
         }
