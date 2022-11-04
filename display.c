@@ -4,17 +4,16 @@
 #include "collect.h"
 #include "display.h"
 
-extern struct network networks[MAX];
-
-int print(int n) {
+int print(int n, struct network *networks) {
     int printed = 0;
 
-    for (int i = 0; i < MAX; i++) {
+    for (int i = 0; i < size_of_networks(); i++) {
+
         if (networks[i].cell == n) {
-            printf("%i %s %s %s %i %s %s %f %i \n",
+            printf("%i %s %s %s %i %s %i/%i %f %i \n",
                    networks[i].cell, networks[i].address, networks[i].essid,
                    networks[i].mode, networks[i].channel, networks[i].encryption_key,
-                   networks[i].quality, networks[i].frequency, networks[i].signal_level);
+                   networks[i].quality[0], networks[i].quality[1], networks[i].frequency, networks[i].signal_level);
             printed++;
         }
     }
@@ -22,7 +21,7 @@ int print(int n) {
 }
 
 
-void wificollector_display() {
+void wificollector_display(struct network *networks) {
 
     char input[STR];
     int n, printed;
@@ -36,14 +35,14 @@ void wificollector_display() {
             n = atoi(input);
         } while (n < 1 || n > 21);
 
-        printed = print(n);
+        printed = print(n, networks);
 
         if (printed == 0) { //error: information has not been added before
             fprintf( stderr, "%s\n", "The information requested has not been added yet.");
         }
 
         do {
-            printf("Do you want to print the information of another cell? [y/N]: ");
+            printf("\nDo you want to print the information of another cell? [y/N]: ");
             reset(quit);
             fgets(quit, STR, stdin);
 
@@ -54,10 +53,18 @@ void wificollector_display() {
 }
 
 
-void wificollector_display_all() {
+void wificollector_display_all(struct network *networks) {
 
     for (int n = 1; n < 22; n++) {
-        print(n);
+        print(n, networks);
+        //int printed = print(n, networks);
+
+        /*
+        if (printed == 0) { //error: information has not been added before
+            fprintf(stderr, "%s\n", "No information has been added yet.");
+            break;
+        }
+        */
     }
 
 }

@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "quit.h"
 
+char quit[STR];
+
 void reset (char string[STR]) {
     for (int i = 0; i < STR; ++i)
         string[i] = 0;
