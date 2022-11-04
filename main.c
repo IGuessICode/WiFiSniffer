@@ -12,7 +12,7 @@ int main() {
     char input[STR];
     int option;
     //Assign memory
-    network *networks = (network*) calloc(SIZE, sizeof(network));
+    network *networks = (network *) malloc(SIZE * sizeof(network));
 
     do {
         printf("\n[2022] SUCEM S.L. Wifi Collector \n \n");

@@ -57,9 +57,9 @@ void wificollector_display_all(struct network *networks) {
 
     for (int n = 1; n < 22; n++) {
         print(n, networks);
-        //int printed = print(n, networks);
 
-        /*
+        /*int printed = print(n, networks);
+
         if (printed == 0) { //error: information has not been added before
             fprintf(stderr, "%s\n", "No information has been added yet.");
             break;

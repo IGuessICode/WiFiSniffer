@@ -1,9 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "quit.h"
 #include "collect.h"
-#include "display.h"
 #include "select.h"
 
 float numerator, denominator, quality;

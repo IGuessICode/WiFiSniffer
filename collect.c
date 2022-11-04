@@ -3,6 +3,7 @@
 #include <string.h>
 #include "quit.h"
 #include "collect.h"
+#include "display.h"
 
 static int position = 0;
 
@@ -25,10 +26,8 @@ void wificollector_collect(struct network *networks) {
 
             } else {
                 for (int i = 0; i < 21; i++) {
-                    // network *pointer = &networks[i];
                     doubled = 0;
 
-                    // if (pointer->cell == atoi(input)) {
                     if (networks[i].cell == atoi(input)) {
                         printf("This cell has already been collected.\n\n");
                         doubled = 1;
@@ -104,7 +103,7 @@ void wificollector_collect(struct network *networks) {
             if (position % SIZE == 0) {
                 int times_resized = position / SIZE;
                 printf("(Allocating another %d positions to the dynamic array)\n", SIZE);
-                networks = realloc(networks, sizeof(network) * SIZE * (times_resized + 1));
+                networks = realloc(networks, sizeof(network) * SIZE * position);
             }
 
         }
