@@ -25,10 +25,11 @@ void wificollector_collect(struct network *networks) {
 
             } else {
                 for (int i = 0; i < 21; i++) {
-                    network *pointer = &networks[i];
+                    // network *pointer = &networks[i];
                     doubled = 0;
 
-                    if (pointer->cell == atoi(input)) {
+                    // if (pointer->cell == atoi(input)) {
+                    if (networks[i]->cell == atoi(input)) {
                         printf("This cell has already been collected.\n\n");
                         doubled = 1;
                         break;
