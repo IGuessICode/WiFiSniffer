@@ -6,7 +6,7 @@
 
 static int position = 0;
 
-void wificollector_collect(struct network *networks) {
+struct network * wificollector_collect(struct network *networks) {
 
     char input[STR], file[STR];
 
@@ -25,10 +25,11 @@ void wificollector_collect(struct network *networks) {
 
             } else {
                 for (int i = 0; i < 21; i++) {
-                    network *pointer = &networks[i];
+                    // network *pointer = &networks[i];
                     doubled = 0;
 
-                    if (pointer->cell == atoi(input)) {
+                    // if (pointer->cell == atoi(input)) {
+                    if (networks[i].cell == atoi(input)) {
                         printf("This cell has already been collected.\n\n");
                         doubled = 1;
                         break;
@@ -97,14 +98,13 @@ void wificollector_collect(struct network *networks) {
             fscanf(fp, "Signal level=%i dBm\n", &networks[position].signal_level);
             printf("%i\n\n", networks[position].signal_level);
 
-            printf("STORED IN: %p\n", (void *) &networks[position]);
-	    position++;
+            position++;
 
             //Resizing the dynamic array, adding 5 position
             if (position % SIZE == 0) {
-                int times_resized = (position / SIZE)+1;
+                int times_resized = position / SIZE;
                 printf("(Allocating another %d positions to the dynamic array)\n", SIZE);
-                networks = realloc(networks, sizeof(network) * SIZE * times_resized);
+                networks = realloc(networks, sizeof(network) * SIZE * (times_resized + 1));
             }
 
         }
@@ -122,10 +122,7 @@ void wificollector_collect(struct network *networks) {
 
     } while (quit[0] != 'n' && quit[0] != 'N');
 
-    for (int i = 0; i<position; i++) {
-      printf("cell number %d is STORED in %p\n", i, (void *) &networks[i]);
-    }
-
+    return networks;
 }
 
 int size_of_networks() {
