@@ -42,3 +42,12 @@ void wificollector_display(Node *head) {
 
 
 }
+
+void wificollector_display_all(Node *head) {
+
+    for (int n = 1; n < 22; n++) {
+        print_node(n, head);
+
+    }
+
+}

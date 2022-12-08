@@ -48,7 +48,7 @@ int print_node(int req_cell, Node *head) {
 		head = head->next;
 	}
 
-	// printf("END OF LIST - That`s all folks\n"); //For debugging
+	// printf("END OF LIST - That's all folks\n"); //For debugging
 
 	return printed;
 }

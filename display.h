@@ -11,6 +11,6 @@
 
 void print(struct network networks);
 void wificollector_display(Node *head);
-void wificollector_display_all(struct network *networks);
+void wificollector_display_all(Node *head);
 
 #endif //DISPLAY_H
