@@ -41,7 +41,7 @@ int main() {
 
             case 1: wificollector_quit(); break;
 
-            case 2: networks = realloc(wificollector_collect(networks), sizeof(networks)); break;
+            case 2: wificollector_collect(&head); break;
 
             case 4: wificollector_select_best(head); break;
 

@@ -17,7 +17,7 @@ void wificollector_quit(void) {
         fgets(quit, STR, stdin);
 
         if (quit[0] == 'y' || quit[0] == 'Y') {
-            printf("Goodbye!");
+            printf("Goodbye!\n");
             exit(0);
         } else if (quit[0] == 'n' || quit[0] == 'N') {
             printf("Here we go again! \n");

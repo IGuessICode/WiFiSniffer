@@ -27,11 +27,7 @@ void print2(float n, Node *head) {
     }
     */
 
-    if (head == NULL) {
-    	printf("ERROR: Cannot read empty list.\n");
-    }
-    else {
-    	do {
+    while (head != NULL) {
 		numerator = (float) head->data.quality[0];
 		denominator = (float) head->data.quality[1];
         	quality = numerator / denominator;
@@ -41,8 +37,6 @@ void print2(float n, Node *head) {
         	}
 
 		head = head->next;
-
-        } while (head != NULL);
 
     }
 

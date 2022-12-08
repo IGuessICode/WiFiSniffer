@@ -1,8 +1,7 @@
-#include "collect.h"
+#include "network.h"
 
 #ifndef NODELIB_H
 #define NODELIB_H
-
 
 typedef struct Node {
 	network data;

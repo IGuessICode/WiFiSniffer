@@ -1,22 +1,8 @@
 #ifndef COLLECT_H
 #define COLLECT_H
 
-#define SIZE 5 //dynamic arrays
-#define STR 80 //strings
-
-typedef struct network {
-    int cell;
-    char address[STR];
-    char essid[STR];
-    char mode[STR];
-    int channel;
-    char encryption_key[STR];
-    int quality[2];
-    float frequency;
-    int signal_level;
-} network;
-
-struct network * wificollector_collect(struct network *networks);
+// struct network * wificollector_collect(struct network *networks);
+void wificollector_collect(Node **head_ptr);
 int size_of_networks(void);
 
 #endif //COLLECT_H

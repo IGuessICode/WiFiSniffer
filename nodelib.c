@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "network.h"
 #include "nodelib.h"
 #include "collect.h"
 #include "display.h"
@@ -92,7 +93,7 @@ int print_node(int req_cell, Node *head) {
 }
 
 
-
+/*
 void delete_node(Node **head_ptr, int key) { // NOT SURE WE ARE GONNA USE IT TBH
 	Node *tmp = *head_ptr, *prev;
 
@@ -112,11 +113,12 @@ void delete_node(Node **head_ptr, int key) { // NOT SURE WE ARE GONNA USE IT TBH
 		return;
 	}
 
-	/* If found, prev connects to next and then, mem
-	   of match node is released */
+	//COMMENTED
+	 If found, prev connects to next and then, mem
+	   of match node is released //END COMMENT
 	prev->next = tmp->next;
 	free(tmp);
-}
+} */
 
 void clear_list(Node **head_ptr) {
 	Node *current = *head_ptr;
