@@ -9,7 +9,7 @@
 
 float numerator, denominator, quality;
 
-void print2(float n, Node *head) {
+void print_by_quality(float n, Node *head) {
 
     /*
     for (int i = 0; i < size_of_networks(); i++) {
@@ -43,7 +43,7 @@ void print2(float n, Node *head) {
 }
 
 
-void wificollector_select_best(Node *head) {
+float wificollector_select_best(Node *head) {
     float best = 0;
 
     /*
@@ -80,11 +80,13 @@ void wificollector_select_best(Node *head) {
     }
 
     printf("The best quality is %f, which corresponds to the following network(s): \n", best);
-    print2(best, head);
+//    print2(best, head);
+
+    return best;
 }
 
 
-void wificollector_select_worst(Node *head) {
+float wificollector_select_worst(Node *head) {
     float worst = 1;
 
     /*
@@ -121,5 +123,6 @@ void wificollector_select_worst(Node *head) {
     }
 
     printf("The worst quality is %f, which corresponds to the following network(s): \n", worst);
-    print2(worst, head);
+//    print2(worst, head);
+    return worst;
 }

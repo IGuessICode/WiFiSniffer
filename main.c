@@ -43,9 +43,9 @@ int main() {
 
             case 2: wificollector_collect(&head); break;
 
-            case 4: wificollector_select_best(head); break;
+            case 4: print_by_quality(wificollector_select_best(head), head); break;
 
-            case 5: wificollector_select_worst(head); break;
+            case 5: print_by_quality(wificollector_select_worst(head), head); break;
 
             case 10: wificollector_display(head); break;
 
