@@ -49,7 +49,6 @@ int main() {
 
             case 10: wificollector_display(head); break;
 
-            //case 11: wificollector_display_all(networks); break;
 	    case 11: print_list(head); break;
 
             default: break;

@@ -7,8 +7,6 @@
 
 static int position = 0;
 
-// struct network * wificollector_collect(struct network *networks) {
-
 void wificollector_collect(Node **head_ptr) {
     char input[STR], file[STR];
 
@@ -16,7 +14,7 @@ void wificollector_collect(Node **head_ptr) {
 
         char path[STR] = "./cells/";
         int repetitions = 0;
-        // int doubled;
+	// int doubled;
 
         do {
             printf("What cell do you want to collect? (1 - 21): ");
@@ -66,50 +64,6 @@ void wificollector_collect(Node **head_ptr) {
 
         //Reading and collecting the data
         fopen(path, "r");
-
-	/*
-        for (int i = 0; i < repetitions; i++) {
-            printf("Data read from %s (added to position %d of the array)\n", file, position);
-
-            fscanf(fp, "Cell %i\n", &networks[position].cell);
-            printf("%i ", networks[position].cell);
-
-            fscanf(fp, "Address: %s\n", networks[position].address);
-            printf("%s ", networks[position].address);
-
-            fscanf(fp, "ESSID:%[^\n]\n", networks[position].essid);
-            printf("%s ", networks[position].essid);
-
-            fscanf(fp, "Mode:%s\n", networks[position].mode);
-            printf("%s ", networks[position].mode);
-
-            fscanf(fp, "Channel:%i\n", &networks[position].channel);
-            printf("%i ", networks[position].channel);
-
-            fscanf(fp, "Encryption key:%s\n", networks[position].encryption_key);
-            printf("%s ", networks[position].encryption_key);
-
-            fscanf(fp, "Quality=%i", &networks[position].quality[0]);
-            fscanf(fp, "/%i\n", &networks[position].quality[1]);
-            printf("%i/%i ", networks[position].quality[0], networks[position].quality[1]);
-
-            fscanf(fp, "Frequency:%f GHz\n", &networks[position].frequency);
-            printf("%f ", networks[position].frequency);
-
-            fscanf(fp, "Signal level=%i dBm\n", &networks[position].signal_level);
-            printf("%i\n\n", networks[position].signal_level);
-
-            position++;
-
-            //Resizing the dynamic array, adding 5 position
-            if (position % SIZE == 0) {
-                int times_resized = position / SIZE;
-                printf("(Allocating another %d positions to the dynamic array)\n", SIZE);
-                networks = realloc(networks, sizeof(network) * SIZE * (times_resized + 1));
-            }
-
-        }
-	*/
 
 	network tmp;
 
