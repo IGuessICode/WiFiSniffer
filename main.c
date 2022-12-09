@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "nodelib.h"
 #include "quit.h"
 #include "collect.h"
+#include "select.h"
 #include "display.h"
 
 int main() {
@@ -10,6 +12,8 @@ int main() {
 
     char input[STR];
     int option;
+    // Initialize list
+    Node *head = NULL;
 
     do {
         printf("\n[2022] SUCEM S.L. Wifi Collector \n \n");
@@ -37,16 +41,24 @@ int main() {
 
             case 1: wificollector_quit(); break;
 
-            case 2: wificollector_collect(); break;
+            case 2: wificollector_collect(&head); break;
 
-            case 10: wificollector_display(); break;
+            case 4: print_by_quality(wificollector_select_best(head), head); break;
 
-            case 11: wificollector_display_all(); break;
+            case 5: print_by_quality(wificollector_select_worst(head), head); break;
+
+            case 10: wificollector_display(head); break;
+
+	    case 11: print_list(head); break;
+		// SORTED LIST PRINTING -> wificollector_display_all(head); break;
 
             default: break;
         }
 
     } while (quit[0] != 'y' && quit[0] != 'Y');
+
+    //Free assigned memory
+    clear_list(&head);
 
     return 0;
 }

@@ -1,7 +1,6 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#define MAX 200 //arrays
 #define STR 80 //strings
 
 #ifdef DEBUG
@@ -10,8 +9,8 @@
 #define debug(msg)
 #endif
 
-int print(int n);
-void wificollector_display(void);
-void wificollector_display_all(void);
+void print(struct network network);
+void wificollector_display(Node *head);
+void wificollector_display_all(Node *head);
 
 #endif //DISPLAY_H

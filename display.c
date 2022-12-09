@@ -1,29 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "nodelib.h"
 #include "quit.h"
 #include "collect.h"
 #include "display.h"
 
-extern struct network networks[MAX];
-
-int print(int n) {
-    int printed = 0;
-
-    for (int i = 0; i < MAX; i++) {
-        if (networks[i].cell == n) {
-            printf("%i %s %s %s %i %s %s %f %i \n",
-                   networks[i].cell, networks[i].address, networks[i].essid,
-                   networks[i].mode, networks[i].channel, networks[i].encryption_key,
-                   networks[i].quality, networks[i].frequency, networks[i].signal_level);
-            printed++;
-        }
-    }
-    return printed;
+void print(struct network networks) {
+	printf("%i %s %s %s %i %s %i/%i %f %i \n",
+	networks.cell, networks.address, networks.essid,
+	networks.mode, networks.channel, networks.encryption_key,
+	networks.quality[0], networks.quality[1], networks.frequency, networks.signal_level);
 }
 
-
-void wificollector_display() {
-
+void wificollector_display(Node *head) {
     char input[STR];
     int n, printed;
 
@@ -36,28 +25,24 @@ void wificollector_display() {
             n = atoi(input);
         } while (n < 1 || n > 21);
 
-        printed = print(n);
+        printed = print_node(n, head);
 
         if (printed == 0) { //error: information has not been added before
             fprintf( stderr, "%s\n", "The information requested has not been added yet.");
         }
 
         do {
-            printf("Do you want to print the information of another cell? [y/N]: ");
+            printf("\nDo you want to print the information of another cell? [y/N]: ");
             reset(quit);
             fgets(quit, STR, stdin);
 
         } while (quit[0] != 'y' && quit[0] != 'Y' && quit[0] != 'n' && quit[0] != 'N');
 
     } while (quit[0] != 'n' && quit[0] != 'N');
-
 }
 
-
-void wificollector_display_all() {
-
-    for (int n = 1; n < 22; n++) {
-        print(n);
-    }
-
+void wificollector_display_all(Node *head) {
+	for (int n = 1; n < 22; n++) {
+		print_node(n, head);
+	}
 }

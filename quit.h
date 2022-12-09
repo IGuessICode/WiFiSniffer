@@ -3,7 +3,7 @@
 
 #define STR 80 //strings
 
-char quit[STR];
+extern char quit[STR];
 
 //function to reset a string
 void reset (char string[STR]);
