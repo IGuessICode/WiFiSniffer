@@ -1,5 +1,5 @@
 # WiFiSniffer
-Uni project: WiFi Collector
+
 
 The program is divided into 4 modules:
 * The _main_ in which the execution starts, the menu will be displayed and from where the further on needed functions will be called.
